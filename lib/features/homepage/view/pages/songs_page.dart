@@ -28,19 +28,14 @@ class SongsPage extends ConsumerWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          const SizedBox(height: 10),
           recentSongs != null
               ? SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  child: GridView.builder(
+                  height: MediaQuery.of(context).size.height * 0.29,
+                  child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: recentSongs.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 8,
-                          childAspectRatio: 3,
-                          crossAxisCount: 2,
-                        ),
+
                     itemBuilder: (context, index) {
                       final song = recentSongs[index];
                       return GestureDetector(
@@ -50,6 +45,8 @@ class SongsPage extends ConsumerWidget {
                               .updateSong(song);
                         },
                         child: Container(
+                          margin: const EdgeInsets.symmetric(vertical: 5),
+                          height: 70,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: Pallete.borderColor,
@@ -57,6 +54,7 @@ class SongsPage extends ConsumerWidget {
                           child: Row(
                             children: [
                               Container(
+                                margin: const EdgeInsets.all(6),
                                 width: 60,
                                 decoration: BoxDecoration(
                                   borderRadius:
@@ -68,23 +66,38 @@ class SongsPage extends ConsumerWidget {
                                 ),
                               ),
                               const SizedBox(width: 10),
-                              Column(
-                                children: [
-                                  Text(
-                                    song.song_name,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8,
+                                ),
+                                child: SizedBox(
+                                  width: 250,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        maxLines: 1,
+                                        song.song_name,
+                                        style: const TextStyle(
+                                          overflow: TextOverflow.ellipsis,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      Text(
+                                        song.artist,
+                                        maxLines: 1,
+                                        style: const TextStyle(
+                                          overflow: TextOverflow.ellipsis,
+
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    song.artist,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
+                                ),
                               ),
                             ],
                           ),
@@ -94,6 +107,8 @@ class SongsPage extends ConsumerWidget {
                   ),
                 )
               : const SizedBox(),
+                        const SizedBox(height: 10),
+
           const Text(
             "Latest Songs",
             style: TextStyle(
@@ -139,6 +154,7 @@ class SongsPage extends ConsumerWidget {
                                   ),
                                 ),
                                 SizedBox(
+                                  width: 180,
                                   child: Text(
                                     song.song_name,
                                     maxLines: 1,
@@ -151,12 +167,17 @@ class SongsPage extends ConsumerWidget {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  song.artist,
-                                  style: const TextStyle(
-                                    color: Pallete.subtitleText,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w700,
+                                SizedBox(
+                                  width: 180,
+                                  child: Text(
+                                    song.artist,
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                      overflow: TextOverflow.ellipsis,
+                                      color: Pallete.subtitleText,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ],

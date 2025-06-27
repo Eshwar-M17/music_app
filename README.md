@@ -44,3 +44,42 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Inspired by Spotify.
 - Built with Flutter and Riverpod.
 - Special thanks to the developers of all the amazing Flutter packages used in this project.
+
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="github_assets/images/home_page.png" alt="Home Page" width="300px" />
+      <br />
+      <em>Home Page</em>
+    </td>
+    <td align="center">
+      <img src="github_assets/images/song_player_page.png" alt="Music Player" width="300px" />
+      <br />
+      <em>Music Player</em>
+    </td>
+    <td align="center">
+      <img src="github_assets/images/favorites_page.png" alt="Favorites Page" width="300px" />
+      <br />
+      <em>Favorites Page</em>
+    </td>
+  </tr>
+   <tr>
+    <td align="center">
+      <img src="github_assets/images/upload_song_page.png" alt="Upload song Page" width="300px" />
+      <br />
+      <em>Upload Song Page</em>
+    </td>
+    <td align="center">
+      <img src="github_assets/images/login_page.png" alt="Login Page" width="300px" />
+      <br />
+      <em>Login Page</em>
+    </td>
+    <td align="center">
+      <img src="github_assets/images/signup_page.png" alt="SignUp Page" width="300px" />
+      <br />
+      <em>SignUp Page</em>
+    </td>
+  </tr>
+</table>

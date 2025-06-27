@@ -2,6 +2,7 @@ import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:c_lient/core/providers/current_song_notifiier.dart';
 import 'package:c_lient/core/theme/app_pallete.dart';
 import 'package:c_lient/core/utils/utils.dart';
+import 'package:c_lient/features/homepage/view/widgets/favorite_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -65,29 +66,34 @@ class MusicPlayer extends ConsumerWidget {
                 children: [
                   Row(
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            song.song_name,
-                            style: const TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
+                      SizedBox(
+                        width: 300,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              song.song_name,
+                              maxLines: 1,
+                              style: const TextStyle(
+                                fontSize: 26,
+                                overflow: TextOverflow.ellipsis,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            song.song_name,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w400,
+                            Text(
+                              song.song_name,
+                              maxLines: 1,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                 overflow: TextOverflow.ellipsis,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       const Spacer(),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite),
-                      ),
+                     FavoriteWidget(currentSong: song)
                     ],
                   ),
 

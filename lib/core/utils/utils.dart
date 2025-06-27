@@ -3,6 +3,7 @@ import 'package:color_hex/color_hex.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 
 String colorToHex(Color hexCode) =>
     hexCode.convertToHex.hex!.replaceFirst("#", "");
@@ -14,22 +15,14 @@ void showSnackBar(BuildContext context, String content) {
 
 Future<File?> pickImage() async {
   try {
-    print("inside utils pick image");
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 85, // Optional: compress image
+    );
 
-    final res = await Permission.photos.request();
-    print("Response from permission request ${res.toString()}");
-    if (res.isGranted) {
-      FilePickerResult? fileResponse = await FilePicker.platform.pickFiles(
-        type: FileType.image,
-        allowMultiple: false,
-      );
-      print("fileresponse while picking image");
-
-      print(fileResponse);
-
-      if (fileResponse != null) {
-        return File(fileResponse.files.first.path!);
-      }
+    if (image != null) {
+      return File(image.path);
     }
     return null;
   } catch (e) {
